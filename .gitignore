@@ -1,0 +1,10 @@
+.vscode
+.idea
+.DS_Store
+
+target
+perf.data*
+
+bin
+mecab-ko-dic-*
+lindera-ko-dic-*
