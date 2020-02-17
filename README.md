@@ -38,7 +38,7 @@ Building a dictionary with `lindera-ko-dic` command:
 You can tokenize text using produced dictionary with `lindera` command:
 
 ```
-% echo "하네다공항한정토트백" | lindera -d ./lindera-ko-dic-2.1.1-20180720                                  [~/github.com/lindera-morphology/lindera-ko-dic-builder]
+% echo "하네다공항한정토트백" | lindera -d ./lindera-ko-dic-2.1.1-20180720
 하네다  NNP,인명,F,하네다,*,*,*,*,
 공항    NNG,장소,T,공항,*,*,*,*,
 한정    NNG,*,T,한정,*,*,*,*,
