@@ -49,4 +49,4 @@ EOS
 ## API reference
 
 The API reference is available. Please see following URL:
-- <a href="https://docs.rs/lindera-ipadic-builder" target="_blank">lindera-ko-dic-builder</a>
+- <a href="https://docs.rs/lindera-ko-dic-builder" target="_blank">lindera-ko-dic-builder</a>
