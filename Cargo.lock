@@ -196,9 +196,9 @@ checksum = "d515b1f41455adea1313a4a2ac8a8a477634fbae63cc6100e3aebb207ce61558"
 
 [[package]]
 name = "lindera-core"
-version = "0.3.1"
+version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b126b6802fc40754989466d3a7ff6d36d3b1b72f7ab99f8e1e7054600956969c"
+checksum = "84cc6a12fb246b0b3eac731cc5e269dc7f6b606b4f15124de43fe90dc130a5b3"
 dependencies = [
  "bincode",
  "byteorder",
