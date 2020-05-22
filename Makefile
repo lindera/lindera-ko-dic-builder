@@ -1,6 +1,4 @@
 BIN_DIR ?= ./bin
-KO_DIC_VERSION ?= 2.1.1-20180720
-SOURCE_URL ?= https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-$(KO_DIC_VERSION).tar.gz
 LINDERA_KO_DIC_BUILDER_VERSION ?= $(shell cargo metadata --no-deps --format-version=1 | jq -r '.packages[] | select(.name=="lindera-ko-dic-builder") | .version')
 
 .DEFAULT_GOAL := build
