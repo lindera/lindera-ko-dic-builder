@@ -196,9 +196,9 @@ checksum = "d515b1f41455adea1313a4a2ac8a8a477634fbae63cc6100e3aebb207ce61558"
 
 [[package]]
 name = "lindera-core"
-version = "0.3.3"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97b7f132a5d361c1236b28434c632097fb8867ebdf4e4c9ab4f793525bb681ff"
+checksum = "38b7801675854c781cc4c1d1de8354fafb652a1c4c1339898bcfae1808903ab5"
 dependencies = [
  "bincode",
  "byteorder",
@@ -209,9 +209,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-fst"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a6f0f4e2978dc4e3f4065be40d5ef2a10014aff1723e9fed2269d6de3507f99"
+checksum = "a6098a7ca6679296cd2d227efa232f990552c5278394c845bec8a70ab0284ae0"
 dependencies = [
  "byteorder",
  "levenshtein_automata",
@@ -221,7 +221,7 @@ dependencies = [
 
 [[package]]
 name = "lindera-ko-dic-builder"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "bincode",
  "byteorder",
