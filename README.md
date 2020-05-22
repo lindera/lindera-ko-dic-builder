@@ -6,7 +6,7 @@ ko-dic dictionary builder for [Lindera](https://github.com/lindera-morphology/li
 
 ## Install
 
-```
+```shell script
 % cargo install lindera-ko-dic-builder
 ```
 
@@ -17,8 +17,8 @@ The following products are required to build:
 - Rust >= 1.39.0
 - make >= 3.81
 
-```text
-% make lindera-ko-dic
+```shell script
+% cargo build --release
 ```
 
 ## Dictionary version
@@ -29,8 +29,11 @@ This repository contains [mecab-ko-dic-2.1.1-20180720](https://bitbucket.org/eun
 
 Building a dictionary with `lindera-ko-dic` command:
 
-```
-% ./bin/lindera-ko-dic ./mecab-ko-dic-2.1.1-20180720 ./lindera-ko-dic-2.1.1-20180720
+```shell script
+% KO_DIC_VERSION=2.1.1-20180720
+% curl -L -O "https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-${KO_DIC_VERSION}.tar.gz"
+% tar zxvf ./mecab-ko-dic-${KO_DIC_VERSION}.tar.gz
+% lindera-ko-dic ./mecab-ko-dic-${KO_DIC_VERSION} ./lindera-ko-dic-${KO_DIC_VERSION}
 ```
 
 ## Dictionary format
@@ -58,14 +61,21 @@ The dictionary format is specified fully (in Korean) in tab `사전 형식 v2.0`
 
 You can tokenize text using produced dictionary with `lindera` command:
 
-```
+```shell script
 % echo "하네다공항한정토트백" | lindera -d ./lindera-ko-dic-2.1.1-20180720
+```
+
+```text
 하네다  NNP,인명,F,하네다,*,*,*,*
 공항    NNG,장소,T,공항,*,*,*,*
 한정    NNG,*,T,한정,*,*,*,*
 토트백  NNG,*,T,토트백,Compound,*,*,토트/NNP/인명+백/NNG/*
 EOS
 ```
+
+For more details about `lindera` command, please refer to the following URL:
+
+- [Lindera CLI](https://github.com/lindera-morphology/lindera/lindera-cli)
 
 ## API reference
 
