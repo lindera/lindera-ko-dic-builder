@@ -3,7 +3,8 @@ name = "lindera-ko-dic-builder"
 version = "0.1.2"
 authors = [
     "Paul Masurel <paul.masurel@gmail.com>",
-    "Minoru Osuka <minoru.osuka@gmail.com>"
+    "Minoru Osuka <minoru.osuka@gmail.com>",
+    "Jun Ohtani <johtani@gmail.com>"
     ]
 edition = "2018"
 description = "A Korean morphological dictionary builder for ko-dic."
@@ -24,7 +25,7 @@ encoding = "0.2"
 glob = "0.3"
 yada = "0.4"
 
-lindera-core = "0.6"
+lindera-core = "0.7"
 
 [[bin]]
 name = "lindera-ko-dic"

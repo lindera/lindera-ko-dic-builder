@@ -190,15 +190,15 @@ checksum = "d515b1f41455adea1313a4a2ac8a8a477634fbae63cc6100e3aebb207ce61558"
 
 [[package]]
 name = "lindera-core"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "70e0deef9b9ed0cbc1fd54afa72dabb370ea93d7ccd23bfee5c97f879e9662a3"
+checksum = "96d20818efd096ed733c88c3d270fa7864266b49c3fc4c1461d558ba33b9b42a"
 dependencies = [
  "bincode",
  "byteorder",
  "encoding",
  "serde",
- "yada 0.3.2",
+ "yada",
 ]
 
 [[package]]
@@ -212,7 +212,7 @@ dependencies = [
  "encoding",
  "glob",
  "lindera-core",
- "yada 0.4.0",
+ "yada",
 ]
 
 [[package]]
@@ -339,12 +339,6 @@ name = "winapi-x86_64-pc-windows-gnu"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
-
-[[package]]
-name = "yada"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c880e66d4b603199c3aaf47c2234948bbc3580babe23f6296d8aa6704b7e0a16"
 
 [[package]]
 name = "yada"
