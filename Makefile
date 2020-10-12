@@ -25,6 +25,6 @@ tag:
 	git push origin v$(LINDERA_KO_DIC_BUILDER_VERSION)
 
 publish:
-ifeq ($(shell cargo show --json lindera-ko-dic-builder | jq -r '.versions[].num' | grep $(LINDERA_KO_DIC_BUILDER_VERSION)),)
+ifeq ($(shell curl -s -XGET https://crates.io/api/v1/crates/lindera-ko-dic-builder  | jq -r '.versions[].num' | grep $(LINDERA_KO_DIC_BUILDER_VERSION)),)
 	cargo package && cargo publish
 endif
