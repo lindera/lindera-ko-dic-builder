@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+- Upgrade lindera 0.6.0 & yada 0.4.0 #9 @johtani
 - Update 2018 edition #5 @johtani 
 
 ## 0.1.2 (2020-05-22)
