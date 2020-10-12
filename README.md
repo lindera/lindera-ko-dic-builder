@@ -14,8 +14,7 @@ ko-dic dictionary builder for [Lindera](https://github.com/lindera-morphology/li
 
 The following products are required to build:
 
-- Rust >= 1.39.0
-- make >= 3.81
+- Rust >= 1.46.0
 
 ```shell script
 % cargo build --release
