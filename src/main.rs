@@ -1,6 +1,9 @@
+use std::path::Path;
+
 use clap::{crate_authors, crate_description, crate_name, crate_version, App, AppSettings, Arg};
 
-use lindera_ko_dic_builder::build;
+use lindera_core::dictionary_builder::DictionaryBuilder;
+use lindera_ko_dic_builder::KodicBuilder;
 
 fn main() {
     let app = App::new(crate_name!())
@@ -28,10 +31,11 @@ fn main() {
 
     let matches = app.get_matches();
 
-    let input_dir = matches.value_of("INPUT_DIR").unwrap();
-    let output_dir = matches.value_of("OUTPUT_DIR").unwrap();
+    let input_dir = Path::new(matches.value_of("INPUT_DIR").unwrap()).to_path_buf();
+    let output_dir = Path::new(matches.value_of("OUTPUT_DIR").unwrap()).to_path_buf();
 
-    match build(input_dir, output_dir) {
+    let builder = KodicBuilder::new();
+    match builder.build_dictionary(&input_dir, &output_dir) {
         Ok(()) => println!("{}", "done"),
         Err(msg) => println!("{}", msg),
     }
