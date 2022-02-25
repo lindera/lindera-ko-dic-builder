@@ -4,9 +4,6 @@ LINDERA_KO_DIC_BUILDER_VERSION ?= $(shell cargo metadata --no-deps --format-vers
 .DEFAULT_GOAL := build
 
 clean:
-	rm -rf $(BIN_DIR)
-	rm -rf ./lindera-ko-dic-*
-	rm -rf ./mecab-ko-dic-*
 	cargo clean
 
 format:
@@ -17,8 +14,6 @@ test:
 
 build:
 	cargo build --release
-	mkdir -p $(BIN_DIR)
-	cp -p ./target/release/lindera-ko-dic $(BIN_DIR)
 
 tag:
 	git tag v$(LINDERA_KO_DIC_BUILDER_VERSION)

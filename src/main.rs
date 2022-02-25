@@ -1,42 +1,73 @@
-use std::path::Path;
+use std::path::PathBuf;
 
-use clap::{crate_authors, crate_description, crate_name, crate_version, App, AppSettings, Arg};
+use clap::{AppSettings, Parser};
 
 use lindera_core::dictionary_builder::DictionaryBuilder;
-use lindera_ko_dic_builder::KodicBuilder;
+use lindera_core::error::LinderaErrorKind;
+use lindera_core::LinderaResult;
+use lindera_ko_dic_builder::ko_dic_builder::KodicBuilder;
 
-fn main() {
-    let app = App::new(crate_name!())
-        .setting(AppSettings::DeriveDisplayOrder)
-        .version(crate_version!())
-        .author(crate_authors!())
-        .about(crate_description!())
-        .help_message("Prints help information.")
-        .version_message("Prints version information.")
-        .version_short("v")
-        .arg(
-            Arg::with_name("INPUT_DIR")
-                .help("The directory where the IPADIC source containing.")
-                .value_name("INPUT_DIR")
-                .required(true)
-                .takes_value(true),
-        )
-        .arg(
-            Arg::with_name("OUTPUT_DIR")
-                .help("The directory where the IPADIC binary for Lindera is output.")
-                .value_name("OUTPUT_DIR")
-                .required(true)
-                .takes_value(true),
-        );
+/// Lindera ko-dic builder CLI
+#[derive(Parser, Debug)]
+#[clap(version, about, long_about = None, setting = AppSettings::DeriveDisplayOrder)]
+struct Args {
+    /// The dictionary source directory.
+    #[clap(short = 's', long = "dict-src", value_name = "DICT_SRC")]
+    dict_src: Option<PathBuf>,
 
-    let matches = app.get_matches();
+    /// The dictionary destination directory.
+    #[clap(short = 'd', long = "dict-dest", value_name = "DICT_DEST")]
+    dict_dest: Option<PathBuf>,
 
-    let input_dir = Path::new(matches.value_of("INPUT_DIR").unwrap()).to_path_buf();
-    let output_dir = Path::new(matches.value_of("OUTPUT_DIR").unwrap()).to_path_buf();
+    /// The user dictionary source file.
+    #[clap(short = 'S', long = "user-dict-src", value_name = "USER_DICT_SRC")]
+    user_dict_src: Option<PathBuf>,
 
-    let builder = KodicBuilder::new();
-    match builder.build_dictionary(&input_dir, &output_dir) {
-        Ok(()) => println!("{}", "done"),
-        Err(msg) => println!("{}", msg),
+    /// The user dictionary destination file.
+    #[clap(short = 'D', long = "user-dict-dest", value_name = "USER_DICT_DEST")]
+    user_dict_dest: Option<PathBuf>,
+}
+
+fn main() -> LinderaResult<()> {
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
+
+    let args = Args::parse();
+
+    let dict_builder = KodicBuilder::new();
+
+    if args.dict_src.is_some() {
+        if args.dict_dest.is_some() {
+            let dict_src = args.dict_src.unwrap();
+            let dict_dest = args.dict_dest.unwrap();
+            match dict_builder.build_dictionary(&dict_src, &dict_dest) {
+                Ok(()) => (),
+                Err(msg) => {
+                    return Err(LinderaErrorKind::Args.with_error(anyhow::anyhow!(msg)));
+                }
+            }
+        } else {
+            return Err(LinderaErrorKind::Args.with_error(anyhow::anyhow!(
+                "`--dict-dest` is required when `--dict-src` is specified"
+            )));
+        }
     }
+
+    if args.user_dict_src.is_some() {
+        if args.user_dict_dest.is_some() {
+            let user_dict_src = args.user_dict_src.unwrap();
+            let user_dict_dest = args.user_dict_dest.unwrap();
+            match dict_builder.build_user_dictionary(&user_dict_src, &user_dict_dest) {
+                Ok(()) => (),
+                Err(msg) => {
+                    return Err(LinderaErrorKind::Args.with_error(anyhow::anyhow!(msg)));
+                }
+            }
+        } else {
+            return Err(LinderaErrorKind::Args.with_error(anyhow::anyhow!(
+                "`--user-dict-dest` is required when `--user-dict-src` is specified"
+            )));
+        }
+    }
+
+    Ok(())
 }
