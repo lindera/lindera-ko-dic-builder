@@ -4,11 +4,13 @@
 
 ko-dic dictionary builder for [Lindera](https://github.com/lindera-morphology/lindera). This project fork from fulmicoton's [kuromoji-rs](https://github.com/fulmicoton/kuromoji-rs).
 
+
 ## Install
 
 ```shell script
 % cargo install lindera-ko-dic-builder
 ```
+
 
 ## Build
 
@@ -20,9 +22,28 @@ The following products are required to build:
 % cargo build --release
 ```
 
+### Build small binary
+
+You can reduce the size of the dictionary by using the "compress" feature flag.  
+Instead, it can only be used with Lindera, which supports compression.
+
+This repo example is this.
+
+```sh
+% cargo build --release --features compress
+```
+
+It also depends on liblzma to compress the dictionary. Please install the dependent packages as follows:
+
+```text
+% sudo apt install liblzma-dev
+```
+
+
 ## Dictionary version
 
 This repository contains [mecab-ko-dic-2.1.1-20180720](https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/).
+
 
 ## Building a dictionary
 
@@ -32,8 +53,9 @@ Building a dictionary with `lindera-ko-dic` command:
 % KO_DIC_VERSION=2.1.1-20180720
 % curl -L -O "https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-${KO_DIC_VERSION}.tar.gz"
 % tar zxvf ./mecab-ko-dic-${KO_DIC_VERSION}.tar.gz
-% lindera-ko-dic ./mecab-ko-dic-${KO_DIC_VERSION} ./lindera-ko-dic-${KO_DIC_VERSION}
+% lindera-ko-dic-builder -s ./mecab-ko-dic-${KO_DIC_VERSION} -d ./lindera-ko-dic-${KO_DIC_VERSION}
 ```
+
 
 ## Dictionary format
 
@@ -56,6 +78,7 @@ The dictionary format is specified fully (in Korean) in tab `사전 형식 v2.0`
 | 6 | 마지막 품사 | last part-of-speech | e.g. given a part-of-speech tag of "VV+EM+VX+EP", would return `EP` |
 | 7 | 표현 | expression | `활용, 복합명사, 기분석이 어떻게 구성되는지 알려주는 필드` – Fields that tell how usage, compound nouns, and key analysis are organized |
 
+
 ## Tokenizing text using produced dictionary
 
 You can tokenize text using produced dictionary with `lindera` command:
@@ -75,6 +98,7 @@ EOS
 For more details about `lindera` command, please refer to the following URL:
 
 - [Lindera CLI](https://github.com/lindera-morphology/lindera/lindera-cli)
+
 
 ## API reference
 

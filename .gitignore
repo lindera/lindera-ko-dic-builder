@@ -5,6 +5,6 @@
 target
 perf.data*
 
-bin
-mecab-ko-dic-*
 lindera-ko-dic-*
+mecab-ipadic-*
+mecab-ko-dic-*
