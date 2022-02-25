@@ -2,7 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 0.10.0 (2022-02-25)
+- Update dependencies #20 @mosuka
 - Upgrade Lindera 0.8.0 #17 @johtani
 
 ## 0.7.1 (2020-10-15)
