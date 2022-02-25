@@ -50,15 +50,15 @@ jobs:
       - name: Build for Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
-          zip --junk-paths lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic
+          zip --junk-paths lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic-builder
       - name: Build for Windows
         if: matrix.os == 'windows-latest'
         run: |
-          7z a lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic.exe
+          7z a lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic-builder.exe
       - name: Build for OSX
         if: matrix.os == 'macos-latest'
         run: |
-          zip --junk-paths lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic
+          zip --junk-paths lindera-ko-dic-builder-${{ matrix.target }}.zip target/${{ matrix.target }}/release/lindera-ko-dic-builder
       - uses: actions/upload-artifact@v2.3.1
         with:
           name: build-${{ matrix.target }}
