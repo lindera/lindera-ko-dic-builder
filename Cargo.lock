@@ -292,9 +292,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-core"
-version = "0.10.0"
+version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5bc4dc99a35081246649b978d212c2c8d6b9adf8171c14bed844ad9c6475af45"
+checksum = "4f4a5b3fe8b182c7b68465125417074dad5597f69e162ebf766330df57d917c9"
 dependencies = [
  "anyhow",
  "bincode",
